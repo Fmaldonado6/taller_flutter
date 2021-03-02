@@ -28,6 +28,7 @@ export class Chat {
 export class Message {
     private _id?: string;
     userId?: string;
+    chatId?: string;
     username?: string;
     content?: string;
     dateSent?: Date;
@@ -39,4 +40,16 @@ export class Message {
 
     set id(id: string) { this._id = id }
 
+}
+
+export class WebSocketMessage {
+    type: WebSocketMessageTypes = WebSocketMessageTypes.message
+    userId: string = ""
+    content?: Message
+}
+
+export enum WebSocketMessageTypes {
+    connected = 0,
+    disconnected,
+    message
 }

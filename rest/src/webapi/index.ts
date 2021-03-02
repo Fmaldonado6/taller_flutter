@@ -1,5 +1,5 @@
 import { mongoDbConnection } from './../persistence/database';
-import { usersController, authController, chatController } from './utils/injector';
+import { usersController, authController, chatController, webSocketController } from './utils/injector';
 import express, { Application } from "express";
 import dotenv from 'dotenv'
 import cors from 'cors';
@@ -36,6 +36,8 @@ class Main {
         this.app.use('/api/users', usersController.router);
         this.app.use('/api/auth', authController.router);
         this.app.use('/api/chat', chatController.router);
+        this.app.use('/websocket', webSocketController.router);
+    
     }
 
 
