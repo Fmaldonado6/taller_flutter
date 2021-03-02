@@ -4,12 +4,9 @@ import { IService } from './iService';
 
 export interface IUsersService extends IService<User> {
 
-}
-
-export interface IGlobalChatsService extends IService<Chat> {
+    getByUsername(username: string): Promise<User>;
 
 }
-
 
 export interface IChatsService extends IService<Chat> {
 
