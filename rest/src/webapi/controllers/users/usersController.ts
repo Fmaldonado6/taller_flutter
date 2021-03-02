@@ -12,9 +12,11 @@ export class UsersController extends BaseController {
 
     config() {
         this.router.post('/', (req, res) => this.create(req as CustomRequest, res))
-        this.router.delete('/:id', (req, res) => this.delete(req as CustomRequest, res))
-        this.router.put('/username', (req, res) => this.updateUsername(req as CustomRequest, res))
-        this.router.put('/password', (req, res) => this.updatePassword(req as CustomRequest, res))
+        this.router.delete('/:id', this.verifyToken, (req, res) => this.delete(req as CustomRequest, res))
+        this.router.get('/:id', this.verifyToken, (req, res) => this.getUser(req as CustomRequest, res))
+        this.router.get('/', this.verifyToken, (req, res) => this.getUsers(req as CustomRequest, res))
+        this.router.put('/username', this.verifyToken, (req, res) => this.updateUsername(req as CustomRequest, res))
+        this.router.put('/password', this.verifyToken, (req, res) => this.updatePassword(req as CustomRequest, res))
     }
 
 
@@ -49,7 +51,6 @@ export class UsersController extends BaseController {
 
         try {
 
-
             const user: User = req.body;
 
             const reqId = req.id;
@@ -60,14 +61,12 @@ export class UsersController extends BaseController {
             if (!user)
                 return res.sendStatus(400);
 
-            const savedUser = await this.usersService.get(user.id)
 
-            if (!savedUser)
+            const updatedUser = await this.usersService.update(user);
+
+
+            if (!updatedUser)
                 return res.sendStatus(404);
-
-            savedUser.username = user.username;
-
-            const updatedUser = await this.usersService.update(savedUser);
 
             res.status(200).json({ username: updatedUser.username, id: updatedUser.id })
 
@@ -77,6 +76,36 @@ export class UsersController extends BaseController {
         }
     }
 
+    async getUser(req: CustomRequest, res: Response) {
+
+        try {
+
+            const user = await this.usersService.get(req.params.id);
+
+            res.status(200).json(user);
+
+        } catch (error) {
+            console.log(error);
+            res.sendStatus(500);
+        }
+
+    }
+
+    async getUsers(req: CustomRequest, res: Response) {
+
+        try {
+
+            const users = await this.usersService.findAll();
+
+            res.status(200).json(users);
+
+        } catch (error) {
+            console.log(error);
+            res.sendStatus(500);
+        }
+
+    }
+
     public async updatePassword(req: CustomRequest, res: Response) {
 
         try {
@@ -84,7 +113,7 @@ export class UsersController extends BaseController {
 
             const user: User = req.body;
             const reqId = req.id;
-
+            console.log(user)
             if (reqId != user.id)
                 return res.sendStatus(403);
 
@@ -103,6 +132,10 @@ export class UsersController extends BaseController {
             savedUser.password = hashedPassword;
 
             const updatedUser = await this.usersService.update(savedUser);
+
+            if (!updatedUser)
+                return res.sendStatus(404);
+
 
             res.status(200).json({ username: updatedUser.username, id: updatedUser.id })
 

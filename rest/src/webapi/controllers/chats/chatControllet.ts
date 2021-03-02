@@ -9,7 +9,7 @@ export class ChatController extends BaseController {
     }
 
     config() {
-        this.router.get('/', (req, res) => this.list(req, res))
+        this.router.get('/',this.verifyToken, (req, res) => this.list(req, res))
     }
 
     async list(req: Request, res: Response) {

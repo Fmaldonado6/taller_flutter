@@ -16,8 +16,8 @@ export abstract class Service<T extends object> implements IService<T> {
     }
     async update(object: T): Promise<T> {
         const objectAny = object as any;
-        const id = objectAny._id
-        return await this.getModel().findByIdAndUpdate(id, objectAny) as T;
+        const id = objectAny.id
+        return (await this.getModel().findByIdAndUpdate(id, object, { new: true })) as T;
 
     }
     async delete(id: string): Promise<T> {
