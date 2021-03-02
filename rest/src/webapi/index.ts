@@ -1,3 +1,5 @@
+import { mongoDbConnection } from './../persistence/database';
+import { usersController, authController, chatController } from './utils/injector';
 import express, { Application } from "express";
 import dotenv from 'dotenv'
 import cors from 'cors';
@@ -15,18 +17,25 @@ class Main {
         this.routes();
     }
 
-    config() {
-        dotenv.config();
-        this.app.set('port', process.env.PORT || 4000);
-        this.app.use(morgan('dev'));
-        this.app.use(cors());
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
-
+    async config() {
+        try {
+            dotenv.config();
+            this.app.set('port', process.env.PORT || 4000);
+            this.app.use(morgan('dev'));
+            this.app.use(cors());
+            this.app.use(express.json());
+            this.app.use(express.urlencoded({ extended: false }));
+            await mongoDbConnection.connectDatabase();
+            console.log("MongoDB connected")
+        } catch (error) {
+            console.error("Couldn't connect to MongoDB", error);
+        }
     }
 
     routes() {
-
+        this.app.use('/api/users', usersController.router);
+        this.app.use('/api/auth', authController.router);
+        this.app.use('/api/chat', chatController.router);
     }
 
 

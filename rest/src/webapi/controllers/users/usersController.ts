@@ -2,9 +2,9 @@ import { CustomRequest } from './../baseController';
 import { IUsersService } from './../../../core/services/iServices';
 import { BaseController } from "../baseController";
 import { User } from '../../../core/domain/models';
-import { Request, Response } from "express";
+import { Response } from "express";
 import bcrypt from 'bcryptjs';
-class UsersController extends BaseController {
+export class UsersController extends BaseController {
     constructor(private usersService: IUsersService) {
         super();
         this.config();
@@ -56,7 +56,7 @@ class UsersController extends BaseController {
 
             if (reqId != user.id)
                 return res.sendStatus(403);
-                
+
             if (!user)
                 return res.sendStatus(400);
 
