@@ -9,7 +9,6 @@ const UserSchema = new Schema({
 
 const ChatSchema = new Schema({
     messages: [{
-        userId: String,
         username:String,
         content: String,
         dateSent: Date

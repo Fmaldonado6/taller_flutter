@@ -1,14 +1,6 @@
 export class User {
-    private _id?: string;
     username?: string;
-    password?: string;
 
-    get id() {
-
-        return this._id ?? "";
-    }
-
-    set id(id: string) { this._id = id }
 
 }
 
@@ -27,7 +19,6 @@ export class Chat {
 
 export class Message {
     private _id?: string;
-    userId?: string;
     chatId?: string;
     username?: string;
     content?: string;
@@ -44,7 +35,6 @@ export class Message {
 
 export class WebSocketMessage {
     type: WebSocketMessageTypes = WebSocketMessageTypes.message
-    userId: string = ""
     content?: Message
 }
 

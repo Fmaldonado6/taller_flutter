@@ -19,6 +19,11 @@ export class UsersService extends Service<User> implements IUsersService {
 
 export class ChatsService extends Service<Chat> implements IChatsService {
     async addMessage(message: Message): Promise<void> {
+        let chat = await this.getModel().findById(message.chatId);
+
+        if (!chat)
+            chat = await this.getModel().create({ messages: [] })
+
         const messageAny = message as any;
         await this.getModel().findOneAndUpdate({ _id: message.chatId }, { $push: { messages: messageAny } })
     }

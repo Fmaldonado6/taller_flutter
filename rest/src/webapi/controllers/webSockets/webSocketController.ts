@@ -24,6 +24,7 @@ export class WebSocketController extends BaseController {
 
     clientConnected(ws: any, req: Request) {
 
+
         ws.on('message', (msg: string) => { this.readMessage(ws, msg) })
 
         ws.on('close', () => { this.closeConnection(ws) })
@@ -37,24 +38,28 @@ export class WebSocketController extends BaseController {
         const parsedMessage = JSON.parse(message) as WebSocketMessage;
 
         if (parsedMessage.type != WebSocketMessageTypes.connected)
-            return this.sendToClients(parsedMessage)
+            return this.sendToClients(parsedMessage, ws)
 
         const client = <Client>{};
-        ws.id = parsedMessage.userId;
-        client.userId = parsedMessage.userId;
+        ws.id = this.clientsConnected.size;
+        client.userId = this.clientsConnected.size.toString();
         client.websocket = ws;
         this.clientsConnected.set(client.userId, client)
     }
 
-    async sendToClients(message: WebSocketMessage) {
+    async sendToClients(message: WebSocketMessage, ws: any) {
 
-        if (message.type == WebSocketMessageTypes.message)
-            await this.chatsService.addMessage(message.content!!)
+        try {
+            if (message.type == WebSocketMessageTypes.message)
+                await this.chatsService.addMessage(message.content!!)
 
-        this.clientsConnected.forEach((val, key) => {
-            if (val.websocket.connected)
-                val.websocket.send(JSON.stringify(message))
-        })
+            this.clientsConnected.forEach((val, key) => {
+                if (val.websocket.connected && key != ws.id)
+                    val.websocket.send(JSON.stringify(message))
+            })
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     closeConnection(ws: any) {
