@@ -44,6 +44,6 @@ También es necesario instalar algún editor de código como Visutal Studio Code
 - [**Flutter**](https://flutter.dev/?gclid=CjwKCAiA1eKBBhBZEiwAX3gql7M0OFZG1Jut3GdjFAz_y2UPF_8S6W_XVwaTFqmpw5WqToqsGSkNURoCyrgQAvD_BwE&gclsrc=aw.ds)
 
 
-## Contact
+## Contacto
 
 Fernando Maldonado - [@Fmaldonado4202](https://twitter.com/Fmaldonado4202) - fmaldonado824@gmail.com

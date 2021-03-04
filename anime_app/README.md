@@ -1,16 +1,32 @@
-# anime_app
+<br />
+<p align="center">
 
-A new Flutter project.
+  <h1 align="center">Aplicación Final</h1>
 
-## Getting Started
+</p>
 
-This project is a starting point for a Flutter application.
+<p align="center">
+    <img  src="../assets/app_anime_0.jpg" alt="Logo" width="30%" >
+    <img  src="../assets/app_anime_1.jpg" alt="Logo" width="30%" >
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+<br>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<!-- ABOUT THE PROJECT -->
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Acerca del proyecto
+
+Una aplicación desarrollada en Flutter para ver información de los animes más famosos, según MyAnimeList, utilizando la REST API de [Jikan](https://jikan.docs.apiary.io/#).
+
+Ésta aplicación utiliza las librerias de:
+
+- [Dio (peticiones http)](https://pub.dev/packages/dio)
+- [Flutter Bloc (state management)](https://pub.dev/packages/flutter_bloc)
+- [Injectable (dependency injection)](https://pub.dev/packages/injectable)
+- [JSON serializable (serializar y deserializar JSON)](https://pub.dev/packages/json_serializable)
+  
+
+
+## Contacto
+
+Fernando Maldonado - [@Fmaldonado4202](https://twitter.com/Fmaldonado4202) - fmaldonado824@gmail.com
