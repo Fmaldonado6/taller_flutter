@@ -1,16 +1,22 @@
-# flutter_rest_sin_libreria
+<br />
+<p align="center">
 
-A new Flutter project.
+  <h1 align="center">Ejemplo servicio REST sin librerías</h1>
 
-## Getting Started
+</p>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<br>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Acerca del proyecto
+
+En éste ejemplo se crea una aplicación de Flutter que consume un servicio REST falso utilizando el Bloc Pattern para manejar el estado, todo esto sin utilizar librerías para ver cuales es el funcionamiento interno de las librerías que utilizaremos.
+  
+
+
+## Contacto
+
+Fernando Maldonado - [@Fmaldonado4202](https://twitter.com/Fmaldonado4202) - fmaldonado824@gmail.com
+
