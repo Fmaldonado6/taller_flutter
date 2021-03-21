@@ -13,7 +13,7 @@ class AnimeImage extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             offset: Offset.fromDirection(360),
-            color: Colors.black,
+            color: Colors.black.withAlpha(120),
             blurRadius: 6.0,
           )
         ],

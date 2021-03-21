@@ -2,7 +2,6 @@ import 'package:anime_app/models/models.dart';
 import 'package:anime_app/screens/detail/cubit/detail_state.dart';
 import 'package:anime_app/screens/detail/widgets/detail_loaded.dart';
 import 'package:anime_app/utils/injector.dart';
-import 'package:anime_app/widgets/anime_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

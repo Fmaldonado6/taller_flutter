@@ -34,13 +34,14 @@ class _MainLoadedState extends State<MainLoaded> {
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 300,
             childAspectRatio: 3 / 4,
-            crossAxisSpacing: 20,
+            crossAxisSpacing: 10,
             mainAxisSpacing: 2,
           ),
-          itemCount: this.animes.length ,
+          itemCount: this.animes.length,
           itemBuilder: (context, index) {
-
-            return CharacterItem(anime: this.animes[index]);
+            return CharacterItem(
+              anime: this.animes[index],
+            );
           },
         );
       },

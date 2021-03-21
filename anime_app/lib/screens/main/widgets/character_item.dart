@@ -12,7 +12,15 @@ class CharacterItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(15),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => DetailPage(
+                anime: this.anime,
+              ),
+            ),
+          );
+        },
         child: Stack(
           children: [
             AnimeImage(url: this.anime.imageUrl),
@@ -36,22 +44,6 @@ class CharacterItem extends StatelessWidget {
                     color: Colors.grey.shade200,
                     fontSize: 17,
                   ),
-                ),
-              ),
-            ),
-            Positioned.fill(
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                          anime: this.anime,
-                        ),
-                      ),
-                    );
-                  },
                 ),
               ),
             ),
