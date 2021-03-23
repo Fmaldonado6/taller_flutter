@@ -11,6 +11,7 @@ class AnimeItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
+        radius: 30,
         backgroundImage: NetworkImage(anime.imageUrl),
       ),
       trailing: Icon(Icons.chevron_right),
