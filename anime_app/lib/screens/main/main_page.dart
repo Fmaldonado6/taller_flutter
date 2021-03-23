@@ -2,6 +2,7 @@ import 'package:anime_app/screens/main/cubit/main_cubit.dart';
 import 'package:anime_app/screens/main/cubit/main_state.dart';
 import 'package:anime_app/screens/main/widgets/main_loaded.dart';
 import 'package:anime_app/utils/injector.dart';
+import 'package:anime_app/widgets/error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +46,10 @@ class _MainPageState extends State<MainPage> {
 
             if (state is MainErrorState)
               return Center(
-                child: Text(state.error),
+                child: ErrorMessage(
+                  retry: () => _mainCubit.getAnimes(),
+                  message: state.error,
+                ),
               );
 
             return MainLoaded();

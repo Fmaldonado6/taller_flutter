@@ -22,7 +22,9 @@ class MainCubit extends Cubit<MainState> {
       final topAnime = await this._animeService.getAnimes(currentPage);
       animes.addAll(topAnime.top);
       emit(MainLoadedState(animes));
-    } catch (e) {}
+    } catch (e) {
+      emit(MainErrorState("Ocurrio un error en la consulta"));
+    }
   }
 
   void setScrollController(ScrollController controller) {
@@ -33,11 +35,11 @@ class MainCubit extends Cubit<MainState> {
   void scrollListener() {
     if (_scrollController.position.extentAfter == 0 && _canFetch) {
       _canFetch = false;
-      fetchMoreNotifications();
+      fetchMoreAnimes();
     }
   }
 
-  Future<void> fetchMoreNotifications() async {
+  Future<void> fetchMoreAnimes() async {
     try {
       final animes = await _animeService.getAnimes(++currentPage);
       _canFetch = true;

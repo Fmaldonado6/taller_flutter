@@ -2,6 +2,7 @@ import 'package:anime_app/models/models.dart';
 import 'package:anime_app/screens/detail/cubit/detail_state.dart';
 import 'package:anime_app/screens/detail/widgets/detail_loaded.dart';
 import 'package:anime_app/utils/injector.dart';
+import 'package:anime_app/widgets/error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,8 +52,16 @@ class _DetailPageState extends State<DetailPage> {
 
             if (state is DetailLoadedState)
               return DetailLoaded(anime: state.anime);
+
+            var error = "Error";
+
+            if (state is DetailErrorState) error = state.error;
+
             return Center(
-              child: Text("Error"),
+              child: ErrorMessage(
+                retry: () => detailCubit.getAnimeFullInfo(widget.anime.malId),
+                message: state.error,
+              ),
             );
           },
         ),
