@@ -9,6 +9,10 @@
     <img  src="../assets/app_anime_0.jpg" alt="Logo" width="30%" >
     <img  src="../assets/app_anime_1.jpg" alt="Logo" width="30%" >
 </p>
+<p align="center">
+    <img  src="../assets/app_anime_2.jpg" alt="Logo" width="30%" >
+    <img  src="../assets/app_anime_3.jpg" alt="Logo" width="30%" >
+</p>
 
 <br>
 
