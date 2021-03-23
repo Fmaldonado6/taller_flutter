@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inicial/add_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,39 +14,45 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: ThemeData(
+        primarySwatch: Colors.blue,
+        accentColor: Colors.blue.shade500,
+        brightness: Brightness.dark
+      ),
+      home: HomePage(title: 'Aplicación de notas'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _HomePageState extends State<HomePage> {
+  List<String> notes = [];
 
-  void _incrementCounter() {
+  List filled = List.filled(20, 0);
+
+  void addNote(String newNote) {
     setState(() {
-      _counter++;
+      notes.add(newNote);
     });
   }
 
-  void _decreaseCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
+  void _changePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AddPage(
+          addNote: this.addNote,
+        ),
+      ),
+    );
   }
 
   @override
@@ -54,40 +62,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            ElevatedButton(
-              onPressed: _resetCounter,
-              child: Text("RESET"),
-            )
-          ],
-        ),
+        child: notes.isEmpty
+            ? Center(
+                child: Text("No hay Notas"),
+              )
+            : ListView.separated(
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: this.notes.length,
+                itemBuilder: (context, index) => ListTile(
+                  trailing: Icon(Icons.chevron_right),
+                  onTap: () {},
+                  title: Text(
+                    this.notes[index],
+                  ),
+                ),
+              ),
       ),
-      floatingActionButton: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FloatingActionButton(
-            onPressed: _decreaseCounter,
-            tooltip: 'Decrement',
-            child: Icon(Icons.remove),
-          ),
-          SizedBox(
-            width: 20,
-          ),
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: _changePage,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
       ),
     );
   }

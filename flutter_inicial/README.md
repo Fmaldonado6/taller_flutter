@@ -12,7 +12,7 @@
 
 ## Acerca del proyecto
 
-En éste ejemplo se crea una aplicación básica de flutter, done se crean Widgets con y sin estado.
+En éste ejemplo se crea una aplicación básica de notas con flutter, done se crean Widgets con y sin estado, así como widgets con scroll.
   
 
 
