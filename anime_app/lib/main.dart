@@ -1,7 +1,5 @@
 import 'package:anime_app/screens/main/main_page.dart';
-import 'package:anime_app/utils/injector.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/services.dart';
 
 void main() {
