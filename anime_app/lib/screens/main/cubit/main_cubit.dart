@@ -3,9 +3,7 @@ import 'package:anime_app/screens/main/cubit/main_state.dart';
 import 'package:anime_app/services/anime_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class MainCubit extends Cubit<MainState> {
   AnimeService _animeService;
   int currentPage = 1;

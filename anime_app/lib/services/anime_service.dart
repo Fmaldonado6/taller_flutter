@@ -1,8 +1,6 @@
 import 'package:anime_app/models/models.dart';
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class AnimeService {
   String baseUrl = "https://api.jikan.moe/v3";
   final Dio dio;

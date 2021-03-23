@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/services.dart';
 
 void main() {
-  configureInjection();
   runApp(MyApp());
 }
 

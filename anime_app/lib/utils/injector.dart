@@ -1,14 +1,14 @@
+import 'package:anime_app/screens/detail/cubit/detail_cubit.dart';
+import 'package:anime_app/screens/main/cubit/main_cubit.dart';
+import 'package:anime_app/services/anime_service.dart';
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
-import 'injector.config.dart';
-final getIt = GetIt.instance;
 
-@injectableInit
-void configureInjection() => $initGetIt(getIt);
+class Injector{
 
-@module
-abstract class RegisterModule {
-  @singleton
-  Dio get dio => Dio();
+  static final AnimeService _animeService = AnimeService(Dio());
+
+  static MainCubit getMainPageCubit() => MainCubit(_animeService);
+
+  static DetailCubit getDetailPageCubit() => DetailCubit(_animeService);
+
 }

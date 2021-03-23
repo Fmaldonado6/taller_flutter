@@ -26,7 +26,6 @@ Una aplicación desarrollada en Flutter para ver información de los animes más
 
 - [Dio (peticiones http)](https://pub.dev/packages/dio)
 - [Flutter Bloc (state management)](https://pub.dev/packages/flutter_bloc)
-- [Injectable (dependency injection)](https://pub.dev/packages/injectable)
 - [JSON serializable (serializar y deserializar JSON)](https://pub.dev/packages/json_serializable)
   
 

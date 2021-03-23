@@ -14,7 +14,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final _mainCubit = getIt.get<MainCubit>();
+  final _mainCubit = Injector.getMainPageCubit();
 
   @override
   void initState() {

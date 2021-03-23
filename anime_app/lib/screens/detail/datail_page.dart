@@ -6,7 +6,6 @@ import 'package:anime_app/widgets/error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubit/detail_cubit.dart';
 
 class DetailPage extends StatefulWidget {
   final Anime anime;
@@ -18,7 +17,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  final detailCubit = getIt.get<DetailCubit>();
+  final detailCubit = Injector.getDetailPageCubit();
 
   @override
   void initState() {
@@ -60,7 +59,7 @@ class _DetailPageState extends State<DetailPage> {
             return Center(
               child: ErrorMessage(
                 retry: () => detailCubit.getAnimeFullInfo(widget.anime.malId),
-                message: state.error,
+                message: error,
               ),
             );
           },
