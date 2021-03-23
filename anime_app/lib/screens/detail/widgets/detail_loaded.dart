@@ -8,12 +8,30 @@ class DetailLoaded extends StatelessWidget {
 
   const DetailLoaded({Key key, this.anime}) : super(key: key);
 
+  bool isScreenSmall(BuildContext context) {
+    return MediaQuery.of(context).size.width < 900;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width * .45;
+    
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    final double padding = isScreenSmall(context) ? 15 : screenWidth * .25;
+
+    final imageWidth =
+        isScreenSmall(context) ? screenWidth * .45 : screenWidth * .15;
+
+    final isDarkMode =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
 
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.only(
+        left: padding,
+        right: padding,
+        top: 15,
+        bottom: 15,
+      ),
       width: double.infinity,
       child: SingleChildScrollView(
         child: Column(
@@ -21,8 +39,8 @@ class DetailLoaded extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(top: 20),
-              width: width,
-              height: width * 1.3,
+              width: imageWidth,
+              height: imageWidth * 1.3,
               child: AnimeImage(url: anime.imageUrl),
             ),
             SizedBox(
@@ -50,7 +68,7 @@ class DetailLoaded extends StatelessWidget {
               child: Text(
                 "${anime.status} ${anime.score}/10",
                 style: TextStyle(
-                    color: Colors.grey.shade700,
+                    color: isDarkMode ? Colors.white : Colors.grey.shade700,
                     fontSize: 15,
                     fontWeight: FontWeight.w500),
               ),
@@ -63,7 +81,7 @@ class DetailLoaded extends StatelessWidget {
               child: Text(
                 "Sinopsis",
                 style: TextStyle(
-                    color: Colors.indigo,
+                    color: Theme.of(context).accentColor,
                     fontSize: 20,
                     fontWeight: FontWeight.w600),
               ),
@@ -74,15 +92,14 @@ class DetailLoaded extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey.shade200),
+                borderRadius: BorderRadius.circular(10),
+                color: isDarkMode ? Colors.grey.shade800 : Colors.grey.shade200,
+              ),
               child: Text(
                 anime.synopsis,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
-                  color: Colors.grey.shade900,
                   fontSize: 16,
-                  fontWeight: FontWeight.w600,
                 ),
               ),
             )

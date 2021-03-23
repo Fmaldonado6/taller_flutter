@@ -21,6 +21,13 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(brightness: Brightness.dark),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      darkTheme: ThemeData(
+        primarySwatch: Colors.indigo,
+        brightness: Brightness.dark,
+        accentColor: Colors.indigo.shade200,
+        appBarTheme: AppBarTheme(brightness: Brightness.dark),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: MainPage(),
     );
   }
