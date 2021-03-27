@@ -10,6 +10,10 @@
 
 Bienvenidos al repositorio del taller de Flutter, aquí podrán encontrar todos los códigos de ejemplo utilizados en el taller.
 
+### Presentaciones
+- [Introducción a Flutter](https://github.com/Fmaldonado6/taller_flutter/raw/master/Introducci%C3%B3n%20a%20Flutter.pdf)
+- [State Management y REST API](https://github.com/Fmaldonado6/taller_flutter/raw/master/State%20Management%20y%20REST%20API.pdf)
+
 ### Secciones
 
 - [Aplicación final](https://github.com/Fmaldonado6/taller_flutter/tree/master/anime_app)
