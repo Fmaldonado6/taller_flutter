@@ -16,6 +16,7 @@ Bienvenidos al repositorio del taller de Flutter, aquí podrán encontrar todos 
 - [Aplicación inicial](https://github.com/Fmaldonado6/taller_flutter/tree/master/flutter_inicial)
 - [Ejemplo servicio REST sin librerias](https://github.com/Fmaldonado6/taller_flutter/tree/master/flutter_rest_sin_libreria)
 - [Ejemplo de interacción con código nativo](https://github.com/Fmaldonado6/taller_flutter/tree/master/flutter_native)
+- [Introducción a dart](https://github.com/Fmaldonado6/taller_flutter/tree/master/dart_introduccion)
 
 <!-- GETTING STARTED -->
 
